@@ -14,7 +14,7 @@ describe('BoardGrid tests', () => {
         });
 
         it('Should return true if board is full', () => {
-            wrapper.setState({ grid: Array(9).fill('Y') });
+            wrapper.setState({ values: Array(9).fill('Y') });
 
             expect(wrapper.instance().isBoardFull()).toBe(true);
         });
@@ -27,7 +27,7 @@ describe('BoardGrid tests', () => {
 
         it('Should return X when first player has fullfill firt row', () => {
             wrapper.setState({
-                grid: Array(3).fill('X')
+                values: Array(3).fill('X')
             });
 
             expect(wrapper.instance().getWinner()).toBe('X');
@@ -35,7 +35,7 @@ describe('BoardGrid tests', () => {
 
         it('Should return O when second player has fullfill firt column', () => {
             wrapper.setState({
-                grid: [
+                values: [
                     'O', null, null,
                     'O', null, null,
                     'O', null, null
@@ -47,7 +47,7 @@ describe('BoardGrid tests', () => {
 
         it('Should return X when first player has fullfill diagonal', () => {
             wrapper.setState({
-                grid: [
+                values: [
                     'O', null, 'X',
                     'O', 'X', null,
                     'X', null, 'O'

@@ -16,12 +16,65 @@ export default class Grille extends Component {
         }
     }
 
-    isNull(value){
-        return value==null;
+    winnerName(c1,c2,c3){
+        if(c1=='X'&&c2=='X'&&c3=='X')
+        {
+            return 'X';
+        }
+        else if(c1=='O'&&c2=='O'&&c3=='O')
+        {
+            return 'O';
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    getWinner()
+    {
+        let name = null;
+        name = this.winnerName(this.state.values[0],this.state.values[1],this.state.values[2]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[3],this.state.values[4],this.state.values[5]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[6],this.state.values[7],this.state.values[8]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[0],this.state.values[3],this.state.values[6]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[1],this.state.values[4],this.state.values[7]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[2],this.state.values[5],this.state.values[8]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[0],this.state.values[4],this.state.values[8]);
+        if (name != null)
+        {
+            return name;
+        }
+        name = this.winnerName(this.state.values[6],this.state.values[4],this.state.values[2]);
+        return name;
     }
 
     isBoardFull(){
-        return this.state.values.every(this.IsNull());
+        return this.state.values.every((value)=>{return value!=null});
     }
 
     AffP = (index) => {
