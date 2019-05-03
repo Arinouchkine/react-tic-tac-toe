@@ -12,6 +12,7 @@ export default class Grille extends Component {
                 null, null, null
             ],
             player : "X",
+            status : props.status,
 
         }
     }
@@ -30,6 +31,7 @@ export default class Grille extends Component {
             return null;
         }
     }
+
 
     getWinner()
     {
@@ -86,6 +88,11 @@ export default class Grille extends Component {
                 if (prevState.values[index]!=null){
                     return null;
                 }
+                this.props.winnerStatus(this.getWinner());
+                if (this.isBoardFull()){
+                    this.state.status = 'Game over';
+                }
+                if (this.getWinner())
                 if (prevState.player == 'X')
                 {
                     player = 'O';
